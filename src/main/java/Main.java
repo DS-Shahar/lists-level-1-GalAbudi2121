@@ -1,5 +1,9 @@
-class Main {
-  public static Node<Integer> a(int[] a){
+package Abudi;
+
+import java.util.Scanner;
+
+public class Abudi {
+	public static Node<Integer> a(int[] a){
 		Node<Integer> fr = new Node<Integer>(a[0]);
 		Node<Integer> last = fr;
 		for(int i=1;i<a.length;i++) {
@@ -70,7 +74,6 @@ class Main {
 		}
 	}
 	public static boolean check(Node<Integer> h, int x) {
-		//q5a
 		while(h!=null) {
 			if(x==h.getValue())
 				return true;
@@ -87,18 +90,108 @@ class Main {
 		return checkRec(h.getNext(),x);
 			
 	}
-  public static List<Integer> removeElement(int number, List<Integer> list) {
-        if (list.isEmpty()) {
-            return list;
+  public static Node<Integer> delete(int num, Node<Integer> h) {
+	  	Node<Integer> x = h;
+	  	Node<Integer> z = h;
+	  	
+        if(h.getValue()==num) {
+        	return h.getNext();
         }
-        if (list.get(0) == number) {
-            list.remove(0);
-            return list;
+        while (h.getNext() != null) {
+            if (h.getValue() == num) {
+                z.setNext(h.getNext()); 
+            } 
+            z = h;
+            h = h.getNext(); 
         }
-        list.remove(0);
-        return removeElement(number, list);
+        return x;
     }
-  public static void main(String[] args) {
-    System.out.prntln("Hello World!");
+  public static Node<Integer> deleteIndex(int num, Node<Integer> h) {
+	  if(num == 1) {
+		  return h.getNext();
+	  }
+	  Node<Integer> x = h;
+	  for(int i = 2; i<=num; i++) {
+		  if(i==num) {
+			  h.setNext(h.getNext().getNext());
+			  return x;
+		  }
+		  h = h.getNext();
+	  }
+	  return x;
   }
-}
+  public static boolean cmpRec(Node<Integer> L1, Node<Integer> L2, Node<Integer> save) {
+	  	if(L1 == null) {
+	  		return true;
+	  	}
+	  	if(L2 == null) {
+	  		return false;
+	  	}
+	  	if(L1.getValue() == L2.getValue()) {
+	  		return cmpRec(L1.getNext(),save,save);
+	  	}
+	  	return cmpRec(L1,L2.getNext(),save);
+	}
+  
+  public static void nine(Node<Integer> L1,Node<Integer> L2) {
+		Node<Integer> saveL2 = L2;
+		while(L1!=null) {
+			
+			L2=saveL2;
+			while(L2!=null) {
+				if(L1.getValue()==L2.getValue())
+					System.out.println(L1.getValue());
+				L2=L2.getNext();
+			}
+			L1=L1.getNext();
+		}
+	}
+  
+  public static Node<Integer> ten(Node<Integer> L1, Node<Integer> L2) {
+			Node<Integer> fir = new Node<Integer>(null);
+			Node<Integer> d = fir;
+			Node<Integer> saveL2 = L2;
+			while(L1!=null) {
+				
+				L2=saveL2;
+				while(L2!=null) {
+					if(L1.getValue()==L2.getValue()) {
+						Node<Integer> a = new Node<Integer>(L1.getValue());
+						d.setNext(a);
+						d=a;
+					}
+					L2=L2.getNext();
+				}
+				L1=L1.getNext();
+			}
+			return fir.getNext();
+		}
+  public static Node<Integer> q11(Node<Integer> L1, Node<Integer> L2) {
+	  Node<Integer> saveL2 = L2;
+	  Node<Integer> saveL1 = L1;
+		while(L1!=null) {
+			
+			L2=saveL2;
+			while(L2!=null) {
+				if(L1.getValue()==L2.getValue())
+				L1 = delete(L1.getValue(),saveL1);
+				L2=L2.getNext();
+			}
+			L1=L1.getNext();
+		}
+		return L1;
+	}
+  
+  	public static Scanner reader = new Scanner(System.in);
+	public static void main(String[] args) {
+		Node<Integer> rachel = buildNode(1,10,20);
+		Node<Integer> eran = buildNode(1,10,20);
+		System.out.println(rachel);
+		System.out.println(eran);
+		System.out.println(q11(rachel,eran));
+		
+	}
+
+	}
+
+
