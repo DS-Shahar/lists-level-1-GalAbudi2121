@@ -1,6 +1,5 @@
 class Main {
   public static Node<Integer> a(int[] a){
-		//q1
 		Node<Integer> fr = new Node<Integer>(a[0]);
 		Node<Integer> last = fr;
 		for(int i=1;i<a.length;i++) {
@@ -11,7 +10,6 @@ class Main {
 		return fr;
 	}
 	public static Node<Integer> buildNode(int x, int y,int n) {
-		//from class
 		Node<Integer> a = new Node<Integer>((int)(Math.random()*(x+y-1)+x));
 		Node<Integer> last = a;
 		for(int i=0;i<n-1;i++) {
@@ -22,7 +20,6 @@ class Main {
 		return a;
 	}
 	public static int count(Node<Integer> h, int x) {
-		//from class
 		int count=0;
 		while(h!=null) {
 			if(x==h.getValue())
@@ -32,21 +29,18 @@ class Main {
 		return count;
 	}
 	public static void printList(Node<Integer> a) {
-		//q2a
 		while(a.getNext()!=null) {
 			System.out.println(a.getValue());
 			a = a.getNext();
 		}
 	}
 	public static void printListRec(Node<Integer> a) {
-		//q2b
 		if(a==null)
 			return;
 		System.out.println(a.getValue());
 		printListRec(a.getNext());
 	}
 	public static void printListRecRev(Node<Integer> a) {
-		//q2c
 		if(a==null)
 			return;
 		printListRecRev(a.getNext());
@@ -54,7 +48,6 @@ class Main {
 		
 	}
 	public static Node<Integer> inputList(){
-		//q3
 		System.out.println("enter num or -1 to stop");
 		Node<Integer> first = new Node<Integer>(null);
 		Node<Integer> p = first;
@@ -70,7 +63,6 @@ class Main {
 		return first.getNext();
 	}
 	public static void printZogi(Node<Integer> a) {
-		//q4
 		while(a!=null) {
 			if(a.getValue()%2==0)
 				System.out.println(a.getValue());
@@ -87,7 +79,6 @@ class Main {
 		return false;
 	}
 	public static boolean checkRec(Node<Integer> h, int x) {
-		//q5b
 		if(h==null) {
 			return false;
 		}
